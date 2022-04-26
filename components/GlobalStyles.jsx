@@ -5,7 +5,7 @@ function GlobalStyles({ modelOpened }) {
     <Global
       styles={(theme) => ({
         body: {
-          paddingTop: '85px', // header height value
+          paddingTop: '80px', // header height value
           overflow: modelOpened ? 'hidden' : 'visible',
         },
 

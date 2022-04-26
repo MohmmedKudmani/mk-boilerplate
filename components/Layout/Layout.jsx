@@ -1,13 +1,12 @@
 import Header from './Header'
 import Theme from '../Theme'
 import { AppShell } from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
 import Navbar from './Navbar'
+import { useDisclosure } from '@mantine/hooks'
 import GlobalStyles from '../GlobalStyles'
 
 function Layout(props) {
   const { children } = props
-
   const [modelOpened, setModelOpened] = useDisclosure(false)
 
   return (
@@ -21,9 +20,8 @@ function Layout(props) {
         header={
           <Header modelOpened={modelOpened} setModelOpened={setModelOpened} />
         }
-        navbar={
-          <Navbar modelOpened={modelOpened} setModelOpened={setModelOpened} />
-        }
+        fixed
+        navbar={<Navbar modelOpened={modelOpened} />}
       >
         {children}
         <GlobalStyles modelOpened={modelOpened} />

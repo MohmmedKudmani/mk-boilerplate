@@ -1,49 +1,60 @@
 import {
   Header as MantineHeader,
   Text,
+  ActionIcon,
   useMantineColorScheme,
-  Container,
   Burger,
-  Box,
+  Container,
+  Group,
 } from '@mantine/core'
 import useStyle from './headerStyle'
-import { useDisclosure, useMediaQuery } from '@mantine/hooks'
-import LightDarkMode from './LightDarkMode'
+import { IconSun, IconMoon } from '@tabler/icons'
 import Links from './Links'
+import { useMediaQuery } from '@mantine/hooks'
 
 function Header(props) {
   const { classes } = useStyle()
   const { modelOpened, setModelOpened } = props
-
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
-
+  const matchXs = useMediaQuery('(min-width: 700px)')
   const dark = colorScheme === 'dark'
-
-  const matchXs = useMediaQuery('(min-width: 600px)')
 
   return (
     <>
-      <MantineHeader fixed classes={classes.header} height={85}>
-        <Container padding='lg' size='xl' className={classes.headerContainer}>
-          {!matchXs && (
-            <Burger
-              opened={modelOpened}
-              onClick={() => setModelOpened.toggle()}
-            />
-          )}
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <Text mr='lg'>Logo</Text>
+      <MantineHeader height={80}>
+        <Container size='xl' className={classes.navbarContainer}>
+          <Burger
+            opened={modelOpened}
+            onClick={() => setModelOpened.toggle()}
+            className={classes.burger}
+          />
+          <Group>
+            <Text>Logo</Text>
             {matchXs && <Links />}
-          </Box>
-          <LightDarkMode dark={dark} toggleColorScheme={toggleColorScheme} />
+          </Group>
+          <LightDarkMode
+            dark={dark}
+            toggleColorScheme={toggleColorScheme}
+            className={classes.toggleDarkMode}
+          />
         </Container>
       </MantineHeader>
     </>
+  )
+}
+
+function LightDarkMode({ className, toggleColorScheme, dark }) {
+  return (
+    <ActionIcon
+      variant='filled'
+      size='lg'
+      radius='lg'
+      onClick={() => toggleColorScheme()}
+      title='Toggle Dark Mode'
+      className={className}
+    >
+      {dark ? <IconSun size={18} /> : <IconMoon size={18} />}
+    </ActionIcon>
   )
 }
 

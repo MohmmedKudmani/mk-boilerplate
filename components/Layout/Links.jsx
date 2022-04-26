@@ -10,12 +10,7 @@ function Links(props) {
 
   const router = useRouter()
 
-  const links = [
-    { id: 0, label: 'Home', href: '/' },
-    { id: 1, label: 'Web Development', href: '/hello' },
-    { id: 2, label: 'Gaming', href: '/world' },
-    { id: 3, label: 'Technology', href: '/world' },
-  ]
+  const links = [{ id: 0, label: 'Home', href: '/' }]
 
   const currentTab = () => {
     if (router.route === '/') return 0
@@ -35,7 +30,7 @@ function Links(props) {
             })}
             px={isNavbar ? 'sm' : 'sm'}
             py={isNavbar ? 'sm' : '7px'}
-            onClick={(event) => {
+            onClick={() => {
               setActive(link.id)
             }}
             component='a'
