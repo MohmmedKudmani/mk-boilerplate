@@ -73,7 +73,7 @@ function Theme(props) {
           colorScheme,
           primaryColor: 'primary',
           breakpoints: {
-            xs: 700,
+            xs: 510,
             sm: 900,
             md: 1000,
             lg: 1200,

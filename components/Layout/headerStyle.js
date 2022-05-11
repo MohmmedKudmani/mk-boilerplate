@@ -21,15 +21,23 @@ const useStyles = createStyles((theme) => {
 
     linkActiveClass: {
       '&, &:hover': {
+        color: theme.colors.orange[dark ? 3 : 6],
+      },
+    },
+
+    linkActiveClassNavbar: {
+      '&, &:hover': {
         backgroundColor: dark
           ? theme.fn.rgba(theme.colors.orange[9], 0.25)
           : theme.colors.orange[1],
-        color: theme.colors.orange[dark ? 3 : 7],
+        color: theme.colors.orange[dark ? 3 : 6],
         borderRadius: '7px',
       },
     },
 
-    toggleDarkMode: {},
+    toggleDarkMode: {
+      backgroundColor: theme.colors.orange[dark ? 5 : 6],
+    },
 
     menuToggleDarkMode: {
       position: 'absolute',

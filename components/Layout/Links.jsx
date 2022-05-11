@@ -26,7 +26,9 @@ function Links(props) {
         <Link passHref key={link.id} href={link.href}>
           <Text
             className={cx(classes.linkClass, {
-              [classes.linkActiveClass]: active === link.id,
+              [isNavbar
+                ? classes.linkActiveClassNavbar
+                : classes.linkActiveClass]: active === link.id,
             })}
             px={isNavbar ? 'sm' : 'sm'}
             py={isNavbar ? 'sm' : '7px'}

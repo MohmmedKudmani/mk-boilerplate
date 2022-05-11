@@ -6,7 +6,7 @@ import { useMediaQuery } from '@mantine/hooks'
 function Navbar(props) {
   const { modelOpened } = props
   const { classes, cx } = useStyle()
-  const matchXs = useMediaQuery('(min-width: 700px)')
+  const matchXs = useMediaQuery('(min-width: 510px)')
 
   return (
     <>

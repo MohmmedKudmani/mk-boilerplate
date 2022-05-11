@@ -4,6 +4,7 @@ import { AppShell } from '@mantine/core'
 import Navbar from './Navbar'
 import { useDisclosure } from '@mantine/hooks'
 import GlobalStyles from '../GlobalStyles'
+import Footer from './Footer'
 
 function Layout(props) {
   const { children } = props
@@ -21,6 +22,7 @@ function Layout(props) {
           <Header modelOpened={modelOpened} setModelOpened={setModelOpened} />
         }
         fixed
+        footer={<Footer />}
         navbar={<Navbar modelOpened={modelOpened} />}
       >
         {children}

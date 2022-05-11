@@ -6,7 +6,7 @@ function GlobalStyles({ modelOpened }) {
       styles={(theme) => ({
         body: {
           paddingTop: '80px', // header height value
-          overflow: modelOpened ? 'hidden' : 'visible',
+          overflow: modelOpened ? 'hidden' : 'overlay',
         },
 
         '::-webkit-scrollbar': {
