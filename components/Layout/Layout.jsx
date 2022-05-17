@@ -13,17 +13,22 @@ function Layout(props) {
   return (
     <Theme>
       <AppShell
-        sx={{
+        sx={(theme) => ({
           '.mantine-AppShell-main': {
             padding: '0',
           },
-        }}
+          '.mantine-AppShell-body': {
+            paddingTop: '80px', // header height value
+          },
+        })}
         header={
           <Header modelOpened={modelOpened} setModelOpened={setModelOpened} />
         }
         fixed
         footer={<Footer />}
-        navbar={<Navbar modelOpened={modelOpened} />}
+        navbar={
+          <Navbar modelOpened={modelOpened} setModelOpened={setModelOpened} />
+        }
       >
         {children}
         <GlobalStyles modelOpened={modelOpened} />

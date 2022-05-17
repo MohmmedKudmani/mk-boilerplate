@@ -1,24 +1,18 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { Text, Group } from '@mantine/core'
-import { useState } from 'react'
 import useStyle from './headerStyle'
+import store from '../../lib/store'
+import { useSnapshot } from 'valtio'
 
 function Links(props) {
-  const { isNavbar } = props
+  const { isNavbar, setModelOpened } = props
   const { classes, cx } = useStyle()
+  const snap = useSnapshot(store)
 
-  const router = useRouter()
-
-  const links = [{ id: 0, label: 'Home', href: '/' }]
-
-  const currentTab = () => {
-    if (router.route === '/') return 0
-    else if (router.route === '/hello') return 1
-    else if (router.route === '/world') return 2
-  }
-
-  const [active, setActive] = useState(currentTab)
+  const links = [
+    { id: 0, label: 'Home', href: '/' },
+    { id: 1, label: 'World', href: '/world' },
+  ]
 
   return (
     <Group align='left' spacing='5px' direction={isNavbar ? 'column' : 'row'}>
@@ -28,12 +22,13 @@ function Links(props) {
             className={cx(classes.linkClass, {
               [isNavbar
                 ? classes.linkActiveClassNavbar
-                : classes.linkActiveClass]: active === link.id,
+                : classes.linkActiveClass]: snap.currentTab() === link.id,
             })}
             px={isNavbar ? 'sm' : 'sm'}
             py={isNavbar ? 'sm' : '7px'}
             onClick={() => {
-              setActive(link.id)
+              store.currentTab(link.id)
+              isNavbar && setModelOpened.close()
             }}
             component='a'
           >

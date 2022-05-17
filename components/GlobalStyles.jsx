@@ -5,7 +5,6 @@ function GlobalStyles({ modelOpened }) {
     <Global
       styles={(theme) => ({
         body: {
-          paddingTop: '80px', // header height value
           overflow: modelOpened ? 'hidden' : 'overlay',
         },
 
@@ -21,7 +20,7 @@ function GlobalStyles({ modelOpened }) {
         },
 
         '::-webkit-scrollbar-track': {
-          borderRadius: '8px',
+          backgroundColor: theme.colorScheme === 'dark' ? '#1A1B1E' : '#fff',
         },
 
         '::-webkit-scrollbar-thumb:hover': {

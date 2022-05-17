@@ -1,11 +1,11 @@
 import { Button, Container } from '@mantine/core'
 
-function Home() {
+function world() {
   return (
     <Container size='xl'>
-      <Button mt='sm'>Home Hello wolrd my name</Button>
+      <Button>Click me</Button>
     </Container>
   )
 }
 
-export default Home
+export default world

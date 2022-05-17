@@ -4,8 +4,8 @@ import Links from './Links'
 import { useMediaQuery } from '@mantine/hooks'
 
 function Navbar(props) {
-  const { modelOpened } = props
-  const { classes, cx } = useStyle()
+  const { modelOpened, setModelOpened } = props
+  const { classes } = useStyle()
   const matchXs = useMediaQuery('(min-width: 510px)')
 
   return (
@@ -22,7 +22,7 @@ function Navbar(props) {
           hidden={!modelOpened}
         >
           <MantineNavbar.Section grow>
-            <Links isNavbar />
+            <Links isNavbar setModelOpened={setModelOpened} />
           </MantineNavbar.Section>
 
           <MantineNavbar.Section className={classes.footer}>
